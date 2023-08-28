@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useComponentTranslation } from "../hooks/useComponentTranslation";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageContext, LanguageContextType } from "../services/contexts";
@@ -12,13 +12,17 @@ export default function LangMenu() {
     const t = useComponentTranslation("langMenu");
     function changeLanguage(lang: string) {
         i18next.changeLanguage(lang);
+        const langStatus = langContext as LanguageContextType;
+        if (langStatus !== null) {
+            langStatus.setLangStatus(lang);
+        }
     }
 
     return (
         <nav aria-label={t("Language menu")}>
             <ul>
                 {languages.map(l =>
-                    <li><Link to={`/${l}/${location.pathname.substring(4)}${location.search}`} onClick={(e) => { changeLanguage(l); }}>{t(l)}</Link></li>
+                    <li><Link to={`/${l}/${location.pathname.substring(4)}${location.search}`} onClick={() => { changeLanguage(l); }}>{t(l)}</Link></li>
                 )}
             </ul>
         </nav>

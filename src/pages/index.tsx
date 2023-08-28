@@ -6,7 +6,8 @@ export default function Index() {
     return (
         <>
             <PageTitle title={t("Home")} />
-            <h1>{t("Accessibility demos", { user: "juanjo" })}</h1>
+            <h2>{t("Home")}</h2>
+            <p>{t("Welcome to A11IExplained! If you want to learn more about accessibility, this is your site!")}</p>
         </>
     );
 }
