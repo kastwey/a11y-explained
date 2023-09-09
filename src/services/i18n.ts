@@ -18,6 +18,7 @@ i18next
         load: 'languageOnly',
         backend: {
             loadPath: "/locales/{{lng}}/{{ns}}.json",
+            reloadInterval: 10000,
         },
         detection: {
             order: ['querystring', 'path'],

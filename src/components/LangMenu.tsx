@@ -8,8 +8,7 @@ export default function LangMenu() {
     const languages = ["en", "es"];
     const location = useLocation();
     const langContext = useContext(LanguageContext)
-
-    const t = useComponentTranslation("langMenu");
+    const t = useComponentTranslation("components/LangMenu");
     function changeLanguage(lang: string) {
         i18next.changeLanguage(lang);
         const langStatus = langContext as LanguageContextType;
@@ -21,9 +20,12 @@ export default function LangMenu() {
     return (
         <nav aria-label={t("Language menu")}>
             <ul>
-                {languages.map(l =>
-                    <li><Link to={`/${l}/${location.pathname.substring(4)}${location.search}`} onClick={() => { changeLanguage(l); }}>{t(l)}</Link></li>
-                )}
+                {languages.map(l => {
+                    const ariaCurrent: { string: "page" } | {} = i18next.language === l ? { "aria-current": "page" } : {};
+                    return (
+                        <li><Link to={`/${l}/${location.pathname.substring(4)}${location.search}`} onClick={() => { changeLanguage(l); }} {...ariaCurrent}>{t(l)}</Link></li>
+                    );
+                })}
             </ul>
         </nav>
     );

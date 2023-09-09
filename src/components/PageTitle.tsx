@@ -6,7 +6,7 @@ type PageTitleProps = {
 };
 
 export default function PageTitle({ title }: PageTitleProps) {
-    const t = useComponentTranslation("pageTitle");
+    const t = useComponentTranslation("components/PageTitle");
     const pageTitle = t("{{title}} - A11YExplained", { title: title });
 
     return (
