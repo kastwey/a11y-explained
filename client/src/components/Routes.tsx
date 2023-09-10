@@ -37,13 +37,13 @@ export function Routes() {
 			path: '/:lan/',
 			index: false,
 			element: <App />,
-			handle: {
-				crumb: () => getBreadcrumbTitle("pages/Index", "Home")
-			},
 			children: [
 				{
 					index: true,
 					element: <HomeIndex />,
+					handle: {
+						crumb: () => getBreadcrumbTitle("pages/Index", "Home")
+					}
 				},
 				{
 					path: "getStarted",

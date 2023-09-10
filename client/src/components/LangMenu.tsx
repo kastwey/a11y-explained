@@ -21,9 +21,9 @@ export default function LangMenu() {
         <nav aria-label={t("Language menu")}>
             <ul>
                 {languages.map(l => {
-                    const ariaCurrent: { string: "page" } | {} = i18next.language === l ? { "aria-current": "page" } : {};
+                    const attributes: { "aria-current": "page" } | {} = i18next.language === l ? { "aria-current": "page" } : {};
                     return (
-                        <li><Link to={`/${l}/${location.pathname.substring(4)}${location.search}`} onClick={() => { changeLanguage(l); }} {...ariaCurrent}>{t(l)}</Link></li>
+                        <li><Link to={`/${l}/${location.pathname.substring(4)}${location.search}`} onClick={() => { changeLanguage(l); }} {...attributes}>{t(l)}</Link></li>
                     );
                 })}
             </ul>
